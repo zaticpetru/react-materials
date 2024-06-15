@@ -2,6 +2,9 @@
 
 ## Create a new project with Vite
 
+Vite requires Node.js version 18+ or 20+. 
+However, some templates require a higher Node.js version to work, please upgrade if your package manager warns about it
+
 ```bash
 PS:> npm create vite@latest
 Need to install the following packages:
@@ -13,6 +16,9 @@ Ok to proceed? (y) y
 > create-vite
 
 √ Project name: ... s1-react-ts-vite-setup
+
+# Search create-vite for more details on each supported template 
+
 √ Select a framework: » React
 √ Select a variant: » TypeScript
 
@@ -23,6 +29,8 @@ Done. Now run:
   npm run dev
 ```
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Check out also these [awesome community templates](https://github.com/vitejs/awesome-vite#templates)!
 
 ## Plugins configuration
 
@@ -67,5 +75,56 @@ export default {
       version: 'detect',
     },
   },
+}
+```
+
+## package.json
+
+```js
+  "scripts": {
+    // start dev server, aliases: `vite dev`, `vite serve`
+    "dev": "vite",
+    // build for production
+    "build": "tsc && vite build",
+    // locally preview production build
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    // added lint:fix script to fix potentially fixable eslint errors
+    "lint:fix": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
+  },
+```
+
+## .env files
+
+Vite uses dotenv to load additional environment variables from the following files in your environment directory:
+
+```bash
+.env                # loaded in all cases
+.env.local          # loaded in all cases, ignored by git
+.env.[mode]         # only loaded in specified mode
+.env.[mode].local   # only loaded in specified mode, ignored by git
+```
+
+To prevent accidentally leaking env variables to the client, only variables prefixed with VITE_ are exposed to your Vite-processed code
+
+Any variables exposed to your Vite source code will end up in your client bundle, VITE_* variables should not contain any sensitive information!
+
+For examples look in to:
+
+- `.env` - Defines env vars loaded in all cases
+- `.env.production` - Defines env vars in production mode
+  - To test production mode run `npm run build` then `npm run preview`
+- `index.html` - Showcase of using env vars in html
+- `src/App.tsx` - Showcase of using env vars in Typescript
+
+## IntelliSense for TypeScript
+
+In `src/App.tsx` our env variables are typed as any, to fix that add a interface for your env variables in `vite-env.d.ts`
+
+```js
+interface ImportMetaEnv {
+  readonly VITE_SOME_KEY: string;
+  readonly VITE_APP_LOGO: string;
+  // more env variables...
 }
 ```

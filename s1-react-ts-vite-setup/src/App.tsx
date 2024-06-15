@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import devLogo from "/setting.png";
+import prodLogo from "/cost.png";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
       <div>
-        <a href="https://vitejs.dev">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {/* <img src={import.meta.env.VITE_APP_LOGO as string} className="logo" alt="Vite logo" /> */}
+        <img src={import.meta.env.PROD ? prodLogo : devLogo} className="logo" alt="Vite logo" />
       </div>
+
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+        <h4>.env variables</h4>
+        <p>VITE_SOME_KEY={import.meta.env.VITE_SOME_KEY}</p>
+        <p>App running in MODE={import.meta.env.MODE}</p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
