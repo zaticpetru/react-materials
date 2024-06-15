@@ -1,0 +1,9 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+  // you can make formatOnSave to false and turn it on only for specific languages
+  // "editor.formatOnSave": false
+  // "[javascript]": {
+  //   "editor.formatOnSave": true
+  // }
+}

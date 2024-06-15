@@ -8,10 +8,9 @@ import react from "@vitejs/plugin-react";
 // });
 
 export default defineConfig(({ command, mode, isSsrBuild, isPreview }) => {
-
   console.log("CONFIG");
-  console.log({ command, mode, isSsrBuild, isPreview })
-  
+  console.log({ command, mode, isSsrBuild, isPreview });
+
   if (mode === "development") {
     return {
       // dev specific config

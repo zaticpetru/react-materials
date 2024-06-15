@@ -10,9 +10,12 @@ function App() {
     <>
       <div>
         {/* <img src={import.meta.env.VITE_APP_LOGO as string} className="logo" alt="Vite logo" /> */}
-        <img src={import.meta.env.PROD ? prodLogo : devLogo} className="logo" alt="Vite logo" />
+        <img
+          src={import.meta.env.PROD ? prodLogo : devLogo}
+          className="logo"
+          alt="Vite logo"
+        />
       </div>
-
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
