@@ -192,3 +192,50 @@ Create workspace configuration `.vscode/settings.json` and set prettier as defau
   // }
 }
 ```
+
+### Prettier vs Linters
+
+Use Prettier for formatting (rules) and linters for catching bugs (code-quality rules).
+
+- Formatting rules ex: max-len, no-mixed-spaces-and-tabs, keyword-spacing, comma-style…
+- Code-quality rules: eg no-unused-vars, no-extra-bind, no-implicit-globals, prefer-promise-reject-errors…
+
+Linters usually contain not only code quality rules, but also stylistic rules. Most stylistic rules are unnecessary when using Prettier, but worse – they might conflict with Prettier!
+
+For checking rules that conflict or are unnecessary with Prettier we will use [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier).
+
+You can check without installing the package by running `npx eslint-config-prettier src/main.tsx`
+
+The output looks like:
+
+```bash
+The following rules are unnecessary or might conflict with Prettier:
+
+- no-extra-semi
+- no-mixed-spaces-and-tabs
+
+The following rules are enabled but cannot be automatically checked. See:
+https://github.com/prettier/eslint-config-prettier#special-rules
+
+- no-unexpected-multiline
+```
+
+For fixing the rules we can install eslint-config-prettier:
+`npm install --save-dev eslint-config-prettier`
+
+Add "prettier" to the "extends" array in our `.eslintrc.cjs` file.
+Make sure to put it last, so it gets the chance to override other configs.
+
+```json
+  extends: [
+    // other plugins
+    "prettier",
+  ],
+```
+
+Then when we run again `npx eslint-config-prettier src/main.tsx`
+We get the message that everything is cool:
+
+```bash
+No rules that are unnecessary or conflict with Prettier were found.
+```

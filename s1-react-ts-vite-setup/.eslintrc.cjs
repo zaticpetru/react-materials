@@ -10,6 +10,8 @@ module.exports = {
     // replaced plugin:@typescript-eslint/recommended to plugin:@typescript-eslint/recommended-type-checked
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:react-hooks/recommended",
+    // prettier plugin to overwrite rules that conflict or are unnecessary with Prettier
+    "prettier",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
