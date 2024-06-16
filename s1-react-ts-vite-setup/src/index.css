@@ -1,6 +1,5 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
@@ -24,15 +23,16 @@ a:hover {
 
 body {
   margin: 0;
+  min-width: 320px;
+  max-width: 1280px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
-  font-size: 3.2em;
   line-height: 1.1;
 }
 
@@ -67,3 +67,49 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+/*  We will cover CSS in another session */
+
+main {
+  grid-area: main;
+}
+
+aside {
+  grid-area: aside;
+  border-inline-end: 1px solid whitesmoke;
+  padding-inline-end: 3rem;
+  text-align: end;
+}
+
+#root {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(max-content, 1fr) 2fr;
+  grid-template-areas: "aside main";
+  flex-grow: 1;
+}
+
+a.active {
+  color: #747bff;
+  text-decoration: underline;
+}
+
+.card {
+  background-color: #213547;
+  width: fit-content;
+  padding: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  margin-block: 2rem;
+  gap: 1rem;
+}
+
+/* #error-page {
+} */
