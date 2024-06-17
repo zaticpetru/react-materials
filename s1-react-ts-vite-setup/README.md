@@ -239,3 +239,9 @@ We get the message that everything is cool:
 ```bash
 No rules that are unnecessary or conflict with Prettier were found.
 ```
+
+## React Router
+
+Start by installing react router: `npm install react-router-dom`
+
+Then we create a [browser router](https://reactrouter.com/en/main/routers/create-browser-router) in our `main.tsx`
