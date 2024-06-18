@@ -17,4 +17,6 @@ export const LowerErrorElement = () => {
   }
 
   throw error;
+  // this will swallow the error and not trigger the error element of the parent
+  // return null
 };

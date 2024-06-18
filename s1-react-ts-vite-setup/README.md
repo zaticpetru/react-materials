@@ -244,4 +244,126 @@ No rules that are unnecessary or conflict with Prettier were found.
 
 Start by installing react router: `npm install react-router-dom`
 
+### Browser router
+
 Then we create a [browser router](https://reactrouter.com/en/main/routers/create-browser-router) in our `main.tsx`
+
+```typescript
+const router = createBrowserRouter([
+  {
+    path: BASE_URL,
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        index: true,
+        element: <EnvVariables />,
+      },
+      {
+        path: "page-with-error",
+        element: <PageWithError />,
+        errorElement: <LowerErrorElement />,
+      },
+      {
+        path: "normal-page",
+        element: <NormalPage />,
+      },
+    ],
+  },
+]);
+```
+
+I would like to highlight here:
+
+- [`errorElement`](https://reactrouter.com/en/main/route/error-element) on root path that will catch exceptions that are thrown in loaders, actions, or component rendering (in App or it's children elements)
+- child element with `index: true`. Index routes render into their parent's Outlet at their parent's URL (like a default child route).
+- child element with it's own `errorElement`. Exceptions that will be caught and treated in `LowerErrorElement` are not thrown to App's error page.
+
+### NavLinks & Links & Outlet
+
+In `App.tsx` we will add the `<Outlet/>` element for rendering elements from child routes.
+
+And then add client side navigation with the help of `<Link>` and `<NavLink>` elements.
+
+- `<Link>` element lets your user navigate using client side navigation without browser doing a full transition like when we use `<a href>` (a full document reload)
+- `<NavLink>` is a special kind of `<Link>` that knows whether or not it is "active", "pending", or "transitioning". Here we use the default active class that is added to `<NavLink>` when the route matches `to` prop.
+
+```tsx
+return (
+  // ...
+  <NavLink to={BASE_URL} end>.env variables</NavLink>
+  <NavLink to="normal-page">normal page</NavLink>
+  <NavLink to="page-with-error?custom=true">custom error</NavLink>
+  <Link to="page-with-error">simple error</Link>
+  <Link to="not-ex">non existing url</Link>
+  // ...
+);
+```
+
+\*\*\* On the first `NavLink` we have a special prop [`end`](https://reactrouter.com/en/main/components/nav-link#end) in order to add active class only if it's exact match.
+
+### errorElement
+
+When exceptions are thrown in loaders, actions, or component rendering, instead of the normal render path for your Routes, the error path will be rendered (`errorElement`) and the error made available with `useRouteError`.
+
+Our global `errorElement` is `src\pages\ErrorPage.tsx`, where using `useRouteError` we can get the error that was thrown.
+By default the type of error is `unknown`, for addressing this, we need to do a type check/cast to a known error type.
+
+We can inspire from example provided by react router `isRouteErrorResponse`
+
+```typescript
+/**
+ * Check if the given error is an ErrorResponse generated from a 4xx/5xx
+ * Response thrown from an action/loader
+ */
+export function isRouteErrorResponse(error: any): error is ErrorResponse {
+  return (
+    error != null &&
+    typeof error.status === "number" &&
+    typeof error.statusText === "string" &&
+    typeof error.internal === "boolean" &&
+    "data" in error
+  );
+}
+```
+
+ErrorResponse type:
+
+```typescript
+type ErrorResponse = {
+  status: number;
+  statusText: string;
+  data: any;
+};
+```
+
+For treating project specific error types, we can do a similar approach:
+
+```typescript
+type CustomError = {
+  fancyDetails: string;
+};
+
+const isCustomErrorResponse = (error: unknown): error is CustomError => {
+  return error != null && (error as CustomError).fancyDetails !== undefined;
+};
+```
+
+### nested errorElement with error rethrow
+
+Let's take a look at `src\pages\pageWithError\LowerErrorElement.tsx`
+
+```typescript
+export const LowerErrorElement = () => {
+  const error = useRouteError();
+
+  if (isCustomErrorResponse(error)) {
+    // And provide specific error details for expected error
+  }
+
+  // if it's not a expected error - we should rethrow it
+  throw error;
+};
+```
+
+It's very important to rethrow `error` if it's not handled, otherwise the error will be "swallowed" by `LowerErrorElement` and `ErrorPage` will not have a chance to handle it.
