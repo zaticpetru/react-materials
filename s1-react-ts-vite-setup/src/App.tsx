@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import devLogo from "/setting.png";
+import prodLogo from "/cost.png";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { BASE_URL } from "./utils";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <aside>
+        <h1>Vite + React</h1>
+        <nav>
+          <NavLink to={BASE_URL} end>
+            .env variables
+          </NavLink>
+          <NavLink to="normal-page">normal page</NavLink>
+          <NavLink to="page-with-error?custom=true">custom error</NavLink>
+          <Link to="page-with-error">simple error</Link>
+          <Link to="not-ex">non existing url</Link>
+        </nav>
+        <div>
+          {/* <img src={import.meta.env.VITE_APP_LOGO as string} className="logo" alt="Vite logo" /> */}
+          <img
+            src={import.meta.env.PROD ? prodLogo : devLogo}
+            className="logo"
+            alt="Vite logo"
+          />
+        </div>
+      </aside>
+      <main>
+        <Outlet />
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -2,12 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- Attribute to icons used -->
+    <!-- https://www.flaticon.com/free-icons/seo-and-web" Icons created by Ehtisham Abid - Flaticon -->
+    <!-- https://www.flaticon.com/free-icons/cost Cost icons created by Freepik - Flaticon -->
+
+    <!-- A different logo is loaded depending on mode the app is running -->
+    <!-- development - setting,png -->
+    <!-- production - cost.png -->
+    <link rel="icon" type="image/svg+xml" href="%VITE_APP_LOGO%" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + React + TS</title>
   </head>
   <body>
     <div id="root"></div>
+    <p>
+      You can have env variables in html as well VITE_SOME_KEY=%VITE_SOME_KEY%
+    </p>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
