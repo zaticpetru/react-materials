@@ -17,8 +17,9 @@
     <div id="root"></div>
 
     <script>
-      function Hello(props) {
+      function HelloText(props) {
         const joinedArr = props.text.join("");
+        //This is jsx
         return React.createElement(
           "h1",
           { className: "my-class" },
@@ -37,11 +38,12 @@
         return React.createElement(
           "header",
           null,
-          Hello({ text }),
+          HelloText({ text }),
           AdditionalText({ additionalText })
         );
       }
 
+      //starting from the root element, create nodes that are going to be part of the virtual DOM
       ReactDOM.render(ParentComponent(), document.getElementById("root"));
     </script>
   </body>
