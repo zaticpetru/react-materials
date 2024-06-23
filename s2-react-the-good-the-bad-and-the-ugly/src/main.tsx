@@ -5,9 +5,11 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "pages/ErrorPage.tsx";
 import { BASE_URL } from "./utils.ts";
-import { GoodExample } from "pages/GoodExample.tsx";
-import { BadExample } from "pages/BadExample.tsx";
-import { UglyExample } from "pages/UglyExample.tsx";
+import { RedundantState } from "pages/RedundantState.tsx";
+import { UnnecessaryEffect } from "pages/UnnecessaryEffect.tsx";
+import { Form } from "pages/Form.tsx";
+import { UnnecessaryEffectTwo } from "pages/UnnecessaryEffectTwo.tsx";
+import { FetchingData } from "pages/FetchingData.tsx";
 
 const router = createBrowserRouter([
   {
@@ -17,19 +19,27 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <BadExample />,
+        element: <Form />,
       },
       {
-        path: "good-example",
-        element: <GoodExample />,
+        path: "redundant-state",
+        element: <RedundantState />,
       },
       {
-        path: "bad-example",
-        element: <BadExample />,
+        path: "unnecessary-effect",
+        element: <UnnecessaryEffect />,
       },
       {
-        path: "ugly-example",
-        element: <UglyExample />,
+        path: "unnecessary-effect-two",
+        element: <UnnecessaryEffectTwo />,
+      },
+      {
+        path: "actual-form",
+        element: <Form />,
+      },
+      {
+        path: "actual-fetching",
+        element: <FetchingData />,
       },
     ],
   },

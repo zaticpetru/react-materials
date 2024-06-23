@@ -1,21 +1,21 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 
 export const Form = () => {
+  //when data changes, re-render the UI
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [fullName, setFullName] = useState("");
 
-  function handleFirstNameChange(e: ChangeEvent<HTMLInputElement>) {
+  const fullName = firstName + " " + lastName;
+
+  const handleFirstNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFirstName(e.target.value);
-  }
+  };
 
-  function handleLastNameChange(e: ChangeEvent<HTMLInputElement>) {
+  const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLastName(e.target.value);
-  }
+  };
 
-  useEffect(() => {
-    setFullName(firstName + " " + lastName);
-  }, [firstName, lastName]);
+  console.log({ fullName });
 
   return (
     <form>
