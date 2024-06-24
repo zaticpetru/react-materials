@@ -12,7 +12,7 @@ export const CodeBlock = ({
   additionalMessage,
 }: CodeBlockProps) => {
   return (
-    <>
+    <div>
       <strong>The {type}</strong>
       {additionalMessage ? <p> {additionalMessage} </p> : null}
       <JSXCodeBlock
@@ -21,6 +21,6 @@ export const CodeBlock = ({
         showLineNumbers={false}
         theme={dracula}
       />
-    </>
+    </div>
   );
 };

@@ -111,5 +111,13 @@ nav {
   gap: 1rem;
 }
 
-/* #error-page {
-} */
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-input {
+  max-width: 20rem;
+  padding-block: 0.3rem;
+}

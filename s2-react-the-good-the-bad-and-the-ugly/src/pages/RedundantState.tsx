@@ -4,10 +4,10 @@ import { GoodExample } from "../Components/GoodExample";
 
 export const RedundantState = () => {
   return (
-    <>
+    <div className="flex-column">
       <GoodExample />
       <BadExample />
       <UglyExample />
-    </>
+    </div>
   );
 };
