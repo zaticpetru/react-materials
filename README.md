@@ -8,3 +8,12 @@
   - Nested routes
   - errorElement example
   - protected route example
+
+## `s2-react-the-good-the-bad-and-the-ugly`
+
+- What does React do?
+  - React.createElement()
+- useState hook
+  - redundant state
+- useEffect hook
+  - unnecessary effect
