@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>React Library</title>
+    <script
+      src="https://unpkg.com/react@latest/umd/react.development.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      function HelloText(props) {
+        const joinedArr = props.text.join("");
+        //This is jsx
+        return React.createElement(
+          "h1",
+          { className: "my-class" },
+          `Hello ${joinedArr}`
+        );
+      }
+
+      function AdditionalText(props) {
+        return React.createElement("h2", null, props.additionalText);
+      }
+
+      function ParentComponent() {
+        const text = ["w", "o", "r", "l", "d"];
+        const additionalText = "I am also here";
+
+        return React.createElement(
+          "header",
+          null,
+          HelloText({ text }),
+          AdditionalText({ additionalText })
+        );
+      }
+
+      //starting from the root element, create nodes that are going to be part of the virtual DOM
+      ReactDOM.render(ParentComponent(), document.getElementById("root"));
+    </script>
+  </body>
+</html>
