@@ -1,0 +1,32 @@
+.ex-2 {
+  max-width: fit-content;
+  left: 0;
+  top: 0;
+  transition-duration: 1s;
+  transition-property: transform, left, top, margin;
+  position: absolute;
+}
+
+.ex-section:has(input[name="centering-ex-2"][value="horizontally"]:checked) .ex-2 {
+  left: 50%;
+  transform: translateX(-50%) translateY(0%);
+}
+
+.ex-section:has(input[name="centering-ex-2"][value="vertically"]:checked) .ex-2 {
+  top: 50%;
+  transform: translateX(0%) translateY(-50%);
+}
+
+.ex-section:has(input[name="centering-ex-2"][value="both"]:checked) .ex-2 {
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.ex-section:has(input[name="margin-ex-2"]:checked) .ex-2 {
+  margin: var(--base-spacing);
+}
+
+.ex-section:has(input[name="relative-ex-2"]:checked) .ex-2 {
+  position: relative;
+}

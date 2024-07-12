@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How to center a div</title>
+
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+    <link rel="shortcut icon" href="assets/code.png" type="image/x-icon">
+  </head>
+  <body>
+    <h1>How to center a &lt;div&gt;?</h1>
+
+    <!-- 1st Example -->
+    <div class="ex-section">
+      <div class="ex-area">
+        <div class="p-1-y p-1-x ex-container overflow-auto">
+          <div class="box ex-1">First example</div>
+        </div>
+      </div>
+      <div class="p-1-y p-2-x border-left-separator">
+        <p>Ex1: center the div with margin auto</p>
+        <code-block>
+          div {
+            max-width: fit-content;
+            margin: auto;
+          }
+        </code-block>
+      </div>
+    </div>
+
+    <!-- 2nd Example -->
+    <div class="ex-section">
+      <div class="p-1-y p-2-x ">
+        <p>Ex2: center the div with transform translate</p>
+        <label>
+          <input type="checkbox" name="margin-ex-2">
+          Add margin
+          <code-block>
+            div {
+              margin: 1rem;
+            }
+          </code-block>
+        </label>
+        <label>
+          <input type="checkbox" name="relative-ex-2">
+          Set position relative
+          <code-block>
+            div {
+              position: relative;
+            }
+          </code-block>
+        </label>
+        <label>
+          <input type="radio" checked name="centering-ex-2" value="horizontally">
+          Center horizontally
+          <code-block>
+            div {
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          </code-block>
+        </label>
+        <label>
+          <input type="radio" name="centering-ex-2" value="vertically">
+          Center vertically
+          <code-block>
+            div {
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          </code-block>
+        </label>
+        <label>
+          <input type="radio" name="centering-ex-2" value="both">
+          Center horizontally & vertically
+          <code-block>
+            div {
+              left: 50%;
+              top: 50%;
+              transform: translate(-50%, -50%);
+            }
+          </code-block>
+        </label>
+      </div>
+      <div class="ex-area border-left-separator p-1-x">
+        <div>
+          <input type="checkbox" id="show-center-ex-2" name="show-center"/>
+          <label for="show-center-ex-2">Show center</label>
+        </div>
+        <div class="p-1-y p-1-x ex-container overflow-auto show-center">
+          <div class="box ex-2 show-center">Second example</div>
+          <div class="box">A normal div</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3rd Example -->
+    <div class="ex-section">
+      <div class="ex-area">
+        <div class="p-1-y p-1-x ex-container overflow-auto">
+          <div class="ex-3">
+            <div class="box">Third example</div>
+            <div class="box additional">Third example</div>
+            <div class="box additional">
+              Third example
+              Third example
+              Third example
+              Third example
+              Third example
+            </div>
+            <div class="box additional">Third example</div>
+          </div>
+        </div>
+      </div>
+      <div class="p-1-y p-2-x border-left-separator">
+        <p>Ex3: center the div with flexbox</p>
+        <code-block>
+          .parent-of-divs {
+            display: flex;
+            justify-content: center;
+          }
+        </code-block>
+        
+        <label>
+          <input type="checkbox" name="align-center-ex-3">
+          Align items center
+          <code-block>
+            .parent-of-divs {
+              align-items: center;
+            }
+          </code-block>
+        </label>
+
+        <label>
+          <input type="checkbox" name="height-100-ex-3">
+          Set height to 100%
+          <code-block>
+            .parent-of-divs {
+              height: 100%;
+            }
+          </code-block>
+        </label>
+
+        <label>
+          <input type="checkbox" name="wrap-gap-ex-3">
+          Enable wrap and add gap
+          <code-block theme="light">
+            .parent-of-divs {
+              flex-wrap: wrap;
+              gap: 1rem;
+            }
+          </code-block>
+        </label>
+                
+        <label>
+          <input type="checkbox" name="show-additional-ex-3">
+          Show more boxes
+        </label>
+
+      </div>
+    </div>
+
+    <!-- 4th Example -->
+    <div class="ex-section">
+      <div class="p-1-y p-2-x ">
+        <p>Ex4: center the div with grid</p>
+        <code-block>
+          .parent-of-divs {
+            display: grid;
+            place-items: center;
+          }
+        </code-block>
+        <label>
+          <input type="checkbox" name="height-100-ex-4">
+          Set height 100%
+          <code-block>
+            .parent-of-divs {
+              height: 100%;
+            }
+          </code-block>
+        </label>
+      </div>
+      <div class="ex-area border-left-separator p-1-x">
+        <div>
+          <input type="checkbox" id="show-center-ex-4" name="show-center"/>
+          <label for="show-center-ex-4">Show center</label>
+        </div>
+        <div class="p-1-y p-1-x ex-container overflow-auto show-center">
+          <div class="ex-4">
+            <div class="box show-center">A normal div</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <hr/>
+    <h2>How about <a href="more-divs.html">more divs at once?</a></h2>
+    <h2>How about <a href="layouts.html">layouts</a></h2>
+    <script type="module" src="code-block.js"></script>
+  </body>
+</html>

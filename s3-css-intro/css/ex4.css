@@ -1,0 +1,12 @@
+.ex-4 {
+  display: grid;
+  place-items: center;
+  /* for animation purposes */
+  height: 0;
+  transition-property: height;
+  transition-duration: 1s;
+}
+
+.ex-section:has(input[name="height-100-ex-4"]:checked) .ex-4 {
+  height: 100%;
+}

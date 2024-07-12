@@ -1,0 +1,25 @@
+.ex-3 {
+  display: flex;
+  justify-content: center;
+}
+
+.ex-3 .additional {
+  display: none;
+}
+
+.ex-section:has(input[name="show-additional-ex-3"]:checked) .ex-3 .additional {
+  display: block;
+}
+
+.ex-section:has(input[name="wrap-gap-ex-3"]:checked) .ex-3 {
+  flex-wrap: wrap;
+  gap: var(--base-spacing);
+}
+
+.ex-section:has(input[name="height-100-ex-3"]:checked) .ex-3 {
+  height: 100%;
+}
+
+.ex-section:has(input[name="align-center-ex-3"]:checked) .ex-3 {
+  align-items: center;
+}

@@ -1,0 +1,106 @@
+.ex-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: var(--base-spacing);
+  margin-block-end: 3rem;
+}
+
+.ex-area {
+  min-height: 200px;
+}
+
+.ex-container {
+  resize: both;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border: solid 1px lightslategray;
+}
+
+.box {
+  border: 2px solid steelblue;
+  padding: var(--base-spacing);
+  --border-color: rgba(0, 0, 255, 0.8);
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.border-left-separator {
+  border-left: steelblue 2px solid;
+}
+
+.p-1-x {
+  padding-inline: var(--base-spacing);
+}
+
+.p-2-x {
+  padding-inline: calc(var(--base-spacing) * 2);
+}
+
+.p-1-y {
+  padding-block: var(--base-spacing);
+}
+
+.p-2-y {
+  padding-block: calc(var(--base-spacing) * 2);
+}
+
+.p-1 {
+  padding: var(--base-spacing);
+}
+
+.p-2 {
+  padding: calc(var(--base-spacing) * 2);
+}
+
+.show-center {
+  position: relative;
+}
+
+.ex-area:has([name="show-center"]) {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: var(--base-spacing);
+}
+
+.ex-area:has([name="show-center"]:checked) .show-center::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  border-left: 2px dashed var(--border-color, rgba(255, 0, 0, 0.5));
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ex-area:has([name="show-center"]:checked) .show-center::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-top: 2px dashed var(--border-color, rgba(255, 0, 0, 0.5));
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.bg-image {
+  --bg-image: url("/assets/code.png");
+  background: var(--bg-image) no-repeat center center;
+  background-size: contain;
+}
+
+.bg-image.content-box {
+  background-origin: content-box;
+}
+
+.pie-chart-bg {
+  --bg-image: url("/assets/icons/pie-chart.png");
+}
+
+.strategy-bg {
+  --bg-image: url("/assets/icons/strategy.png");
+}

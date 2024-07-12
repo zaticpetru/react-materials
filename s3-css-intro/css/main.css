@@ -1,0 +1,29 @@
+@import "utils.css";
+
+@import "ex1.css";
+@import "ex2.css";
+@import "ex3.css";
+@import "ex4.css";
+@import "ex5.css";
+
+@import "layouts/layouts.css";
+
+:root {
+  /* --base-spacing: 0.75rem; */
+  --base-spacing: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* use font-size relative to browser font size */
+  /* this helps prevent scaling issues on zooming in and out */
+  font-size: 100%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding: 1rem;
+}

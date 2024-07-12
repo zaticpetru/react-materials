@@ -1,0 +1,17 @@
+.half-and-half {
+  --base-size: 10rem;
+  display: flex;
+  height: 100%;
+  gap: calc(var(--base-spacing) / 2);
+  flex-wrap: wrap;
+
+  & div {
+    flex: 1 var(--base-size);
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+}
+
+

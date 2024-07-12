@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @property --index {
+        syntax: "<length>";
+        inherits: true;
+        initial-value: 1rem;
+      }
+
+      .child {
+        --index: calc(inherit(--index) + 1rem);
+        margin-left: var(--index);
+      }
+
+      .child:nth-child(1){
+        --index: 1rem;
+      }
+      .child:nth-child(2){
+        --index: 2rem;
+      }
+      .child:before {
+        --test: "2";
+        content: var(--test);
+        display: block;
+      }
+
+      .parent > div {
+        /* --index: 1rem; */
+        height: 3rem;
+        border: 0.5rem solid slateblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+      <div class="child"></div>
+    </div>
+  </body>
+</html>
